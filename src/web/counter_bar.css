@@ -27,5 +27,15 @@
 }
 
 #counter-bar .counter {
+    text-align: start;
     padding-inline-start: 8px;
+}
+
+#counter-bar .countdown {
+    text-align: center;
+}
+
+#counter-bar .loops {
+    padding-inline-end: 8px;
+    text-align: end;
 }

@@ -26,6 +26,7 @@ BAR_HTML = """
 <div class="progress"></div>
 <p class="counter item">1</p>
 <p class="countdown item">0:04</p>
+<p class="loops item">1</p>
 </div>
 <script>
 globalThis.counterBar = new CounterBar();
@@ -33,9 +34,7 @@ globalThis.counterBar = new CounterBar();
 """
 
 
-def update_countdown(
-    new_state: "MainWindowState", old_state: "MainWindowState"
-) -> None:
+def update_countdown(new_state: MainWindowState, old_state: MainWindowState) -> None:
     if new_state == "review":
         mw.reviewer.web.eval(
             "globalThis.counterBar.startCountdown(%d)" % config["countdown_seconds"]

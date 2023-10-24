@@ -4,6 +4,7 @@ class CounterBar {
             counterBar: document.getElementById("counter-bar"),
             counter: document.querySelector("#counter-bar .counter"),
             countDown: document.querySelector("#counter-bar .countdown"),
+            loops: document.querySelector("#counter-bar .loops"),
             pogress: document.querySelector("#counter-bar .progress"),
         };
         this.setCounter(0);
@@ -24,11 +25,13 @@ class CounterBar {
         if (this._countdownInterval) {
             clearInterval(this._countdownInterval);
         }
+        this._setLoops(0);
         this._setCountdown(value);
         this._countdownInterval = setInterval(() => {
             if (this.countdown > 0) {
                 this._setCountdown(this.countdown - 1, value);
             } else {
+                this._setLoops(this.loops + 1);
                 this._setCountdown(value);
                 if (this.counter <= 0) {
                     this.setCounter(this.counter - 1, value);
@@ -51,6 +54,11 @@ class CounterBar {
         value -= minutes * 60;
         formatted += ":" + value.toString().padStart(2, "0");
         this.widgets.countDown.textContent = formatted;
-        this.widgets.pogress.style.width = `${100 * value / original}%`;
+        this.widgets.pogress.style.width = `${(100 * value) / original}%`;
+    }
+
+    _setLoops(value) {
+        this.loops = value;
+        this.widgets.loops.textContent = value.toString();
     }
 }
