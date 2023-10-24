@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import os
 import sys
-from typing import Any, Sequence
+from typing import TYPE_CHECKING, Any, Sequence
 
 from anki import hooks
 from anki.collection import Collection
@@ -12,13 +12,15 @@ from aqt.qt import *
 from aqt.reviewer import Reviewer
 from aqt.webview import WebContent
 
+if TYPE_CHECKING:
+    from aqt.main import MainWindowState
+
 sys.path.append(os.path.join(os.path.dirname(__file__), "vendor"))
 
 from .config import config
 from .consts import consts
 
-BAR_HTML = (
-    """
+BAR_HTML = """
 
 <div id='counter-bar'>
 <div class="progress"></div>
@@ -27,11 +29,17 @@ BAR_HTML = (
 </div>
 <script>
 globalThis.counterBar = new CounterBar();
-globalThis.counterBar.startCountdown(%d);
 </script>
 """
-    % config["countdown_seconds"]
-)
+
+
+def update_countdown(
+    new_state: "MainWindowState", old_state: "MainWindowState"
+) -> None:
+    if new_state == "review":
+        mw.reviewer.web.eval(
+            "globalThis.counterBar.startCountdown(%d)" % config["countdown_seconds"]
+        )
 
 
 def on_reviewer_card_action(*args: Any, **kwargs: Any) -> None:
@@ -62,4 +70,5 @@ gui_hooks.reviewer_will_bury_card.append(on_reviewer_card_action)
 gui_hooks.reviewer_will_bury_note.append(on_reviewer_card_action)
 gui_hooks.reviewer_will_suspend_card.append(on_reviewer_card_action)
 gui_hooks.reviewer_will_suspend_note.append(on_reviewer_card_action)
+gui_hooks.state_did_change.append(update_countdown)
 hooks.notes_will_be_deleted.append(on_notes_will_be_deleted)

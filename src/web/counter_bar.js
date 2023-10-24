@@ -7,6 +7,7 @@ class CounterBar {
             pogress: document.querySelector("#counter-bar .progress"),
         };
         this.setCounter(0);
+        this._countdownInterval = undefined;
     }
 
     setCounter(value) {
@@ -20,8 +21,11 @@ class CounterBar {
     }
 
     startCountdown(value) {
+        if (this._countdownInterval) {
+            clearInterval(this._countdownInterval);
+        }
         this._setCountdown(value);
-        setInterval(() => {
+        this._countdownInterval = setInterval(() => {
             if (this.countdown > 0) {
                 this._setCountdown(this.countdown - 1, value);
             } else {
