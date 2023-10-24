@@ -1,0 +1,31 @@
+#counter-bar {
+    height: 32px;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    border: solid grey 1px;
+}
+
+#counter-bar .progress {
+    position: absolute;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    background: rgb(255, 179, 179);
+}
+
+#counter-bar .progress.green {
+    background: rgb(174, 255, 127);
+}
+
+#counter-bar .item {
+    flex-basis: 50%;
+    text-align: left;
+    margin: 0px;
+    padding-block: 8px;
+    font-size: 16px;
+}
+
+#counter-bar .counter {
+    padding-inline-start: 8px;
+}

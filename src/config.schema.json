@@ -1,0 +1,8 @@
+{
+    "properties": {
+        "countdown_seconds": {
+            "type": "number"
+        }
+    },
+    "type": "object"
+}
