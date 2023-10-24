@@ -8,6 +8,11 @@
     padding: 4rem 0 !important;
 }
 
+/* Nudge flags down a bit */
+#_flag {
+    padding-top: 4rem !important;
+}
+
 #counter-bar {
     height: 32px;
     display: flex;
