@@ -19,15 +19,15 @@ class CounterBar {
         }
     }
 
-    setCountDown(value) {
-        this._setCountDown(value);
+    startCountdown(value) {
+        this._setCountdown(value);
         setInterval(() => {
             if (this.countdown > 0) {
-                this._setCountDown(this.countdown - 1);
+                this._setCountdown(this.countdown - 1, value);
             } else {
-                this._setCountDown(value);
+                this._setCountdown(value);
                 if (this.counter <= 0) {
-                    this.setCounter(this.counter - 1);
+                    this.setCounter(this.counter - 1, value);
                 } else {
                     this.setCounter(0);
                 }
@@ -35,7 +35,11 @@ class CounterBar {
         }, 1000);
     }
 
-    _setCountDown(value) {
+    _setCountdown(value, original) {
+        if (typeof original == "undefined") {
+            original = value;
+        }
+
         this.countdown = value;
         let formatted = "";
         let minutes = Math.floor(value / 60);
@@ -43,5 +47,6 @@ class CounterBar {
         value -= minutes * 60;
         formatted += ":" + value.toString().padStart(2, "0");
         this.widgets.countDown.textContent = formatted;
+        this.widgets.pogress.style.width = `${100 * value / original}%`;
     }
 }

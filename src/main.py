@@ -27,7 +27,7 @@ BAR_HTML = (
 </div>
 <script>
 globalThis.counterBar = new CounterBar();
-globalThis.counterBar.setCountDown(%d);
+globalThis.counterBar.startCountdown(%d);
 </script>
 """
     % config["countdown_seconds"]
