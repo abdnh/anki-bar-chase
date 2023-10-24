@@ -1,9 +1,25 @@
+/* For compatibility with the Remaining Time add-on */
+#qa {
+    padding-top: 2rem !important;
+}
+
+/* For compatibility with the Massive Cloze notetype */
+.header {
+    padding: 4rem 0 !important;
+}
+
 #counter-bar {
     height: 32px;
     display: flex;
     flex-direction: row;
-    position: relative;
     border: solid grey 1px;
+    position: sticky;
+    top: 1rem;
+    left: 0;
+    z-index: 100;
+    width: 100%;
+    background: white;
+    line-height: 1rem;
 }
 
 #counter-bar .progress {
