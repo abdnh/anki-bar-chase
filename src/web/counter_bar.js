@@ -5,7 +5,7 @@ class CounterBar {
             counter: document.querySelector("#counter-bar .counter"),
             countDown: document.querySelector("#counter-bar .countdown"),
             loops: document.querySelector("#counter-bar .loops"),
-            pogress: document.querySelector("#counter-bar .progress"),
+            progress: document.querySelector("#counter-bar .progress"),
         };
         this.setCounter(0);
         this._countdownInterval = undefined;
@@ -15,9 +15,9 @@ class CounterBar {
         this.counter = value;
         this.widgets.counter.textContent = value.toString();
         if (this.counter <= 0) {
-            this.widgets.pogress.classList.remove("green");
+            this.widgets.progress.classList.remove("green");
         } else {
-            this.widgets.pogress.classList.add("green");
+            this.widgets.progress.classList.add("green");
         }
     }
 
@@ -40,13 +40,10 @@ class CounterBar {
                 }
             }
         }, 1000);
+        this.widgets.progress.style.animationDuration = `${value}s`;
     }
 
-    _setCountdown(value, original) {
-        if (typeof original == "undefined") {
-            original = value;
-        }
-
+    _setCountdown(value) {
         this.countdown = value;
         let formatted = "";
         let minutes = Math.floor(value / 60);
@@ -54,7 +51,6 @@ class CounterBar {
         value -= minutes * 60;
         formatted += ":" + value.toString().padStart(2, "0");
         this.widgets.countDown.textContent = formatted;
-        this.widgets.pogress.style.width = `${(100 * value) / original}%`;
     }
 
     _setLoops(value) {
