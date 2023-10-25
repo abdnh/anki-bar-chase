@@ -9,7 +9,6 @@ class CounterBar {
         };
         this.setCounter(0);
         this._countdownInterval = undefined;
-        this._animationRequestId = undefined;
     }
 
     setCounter(value) {
@@ -22,49 +21,26 @@ class CounterBar {
         }
     }
 
-    startCountdown(seconds) {
+    startCountdown(value) {
         if (this._countdownInterval) {
             clearInterval(this._countdownInterval);
         }
-        if (this._animationRequestId) {
-            window.cancelAnimationFrame(this._animationRequestId);
-        }
         this._setLoops(0);
-        this._setCountdown(seconds + 1);
-        const updateCounts = () => {
-            if (this.countdown > 0) {
-                this._setCountdown(this.countdown - 1);
+        this._setCountdown(value);
+        this._countdownInterval = setInterval(() => {
+            if (this.countdown - 1 > 0) {
+                this._setCountdown(this.countdown - 1, value);
             } else {
                 this._setLoops(this.loops + 1);
-                this._setCountdown(seconds);
+                this._setCountdown(value);
                 if (this.counter <= 0) {
-                    this.setCounter(this.counter - 1);
+                    this.setCounter(this.counter - 1, value);
                 } else {
                     this.setCounter(0);
                 }
             }
-        };
-        let startTimeStamp, lastCountUpdate;
-        const animate = (timeStamp) => {
-            if (
-                startTimeStamp === undefined ||
-                Math.round(timeStamp - lastCountUpdate) >= 1000
-            ) {
-                updateCounts();
-                lastCountUpdate = timeStamp;
-            }
-            if (startTimeStamp === undefined) {
-                startTimeStamp = timeStamp;
-            }
-            const elapsed = timeStamp - startTimeStamp;
-            const width = 100 - (100 * (elapsed / 1000)) / seconds;
-            this.widgets.progress.style.width = `${width}%`;
-            if (width <= 0) {
-                startTimeStamp = undefined;
-            }
-            this._animationRequestId = window.requestAnimationFrame(animate);
-        };
-        this._animationRequestId = window.requestAnimationFrame(animate);
+        }, 1000);
+        this.widgets.progress.style.animationDuration = `${value}s`;
     }
 
     _setCountdown(value) {
