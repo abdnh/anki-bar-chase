@@ -1,4 +1,4 @@
-# Counter Bar
+# Bar Chase
 
 This add-on adds a top bar to the review screen with the following elements:
 
