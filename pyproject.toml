@@ -23,4 +23,4 @@ package-dir = { "bar_chase" = "src" }
 [tool.setuptools_scm]
 
 [project.urls]
-Repository = "https://github.com/abdnh/anki-addon-template"
+Repository = "https://github.com/abdnh/anki-bar-chase"

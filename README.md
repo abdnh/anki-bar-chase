@@ -1,6 +1,6 @@
 # Bar Chase
 
-This add-on adds a top bar to the review screen with the following elements:
+This Anki add-on adds a top bar to the review screen with the following elements:
 
 -   A repeating countdown timer with configurable time in the middle.
 -   A counter on the left that starts from 0 and behaves like this:
@@ -11,13 +11,17 @@ This add-on adds a top bar to the review screen with the following elements:
 
 ![screenshot](images/shot1.png)
 
+## Download
+
+You can download the add-on from AnkiWeb: [1370131826](https://ankiweb.net/shared/info/1370131826)
+
 ## Changelog
 
 See [CHANGELOG.md](CHANGELOG.md) for a list of changes.
 
 ## Support & feature requests
 
-Please post any questions, bug reports, or feature requests in the [support page](https://forums.ankiweb.net/c/add-ons/11) or the [issue tracker](https://github.com/abdnh/anki-addon-template/issues).
+Please post any questions, bug reports, or feature requests in the [support page](https://forums.ankiweb.net/c/add-ons/11) or the [issue tracker](https://github.com/abdnh/anki-bar-chase/issues).
 
 If you want priority support for your feature/help request, I'm available for hire.
 You can get in touch from the aforementioned pages, via [email](mailto:abdo@abdnh.net) or on [Fiverr](https://www.fiverr.com/abd_nh).

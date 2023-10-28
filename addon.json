@@ -1,5 +1,6 @@
 {
-    "homepage": "https://github.com/abdnh/anki-addon-template",
+    "ankiweb_id": "1370131826",
+    "homepage": "https://github.com/abdnh/anki-bar-chase",
     "min_point_version": 45,
     "name": "Bar Chase",
     "package": "bar_chase"
