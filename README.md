@@ -1,6 +1,15 @@
 # Counter Bar
 
-TODO
+This add-on adds a top bar to the review screen with the following elements:
+
+-   A repeating countdown timer with configurable time in the middle.
+-   A counter on the left that starts from 0 and behaves like this:
+    -   The counter goes up by 1 when you rate a card, suspend it, bury it or delete it.
+    -   If the countdown timer ends and the counter is <= 0, the counter goes down by 1. If it's > 0, it resets to 0.
+-   A counter on the right for the number of countdown loops passed in the current review session.
+-   A progress bar indicating the countdown time. The bar will be red if the left-side counter is <= 0, green otherwise.
+
+![screenshot](images/shot1.png)
 
 ## Changelog
 
